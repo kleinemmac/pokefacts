@@ -31,10 +31,12 @@
               ></v-progress-circular>
             </div>
             <div v-else-if="item !== null">
-              <img :src="item.sprites.default" id="item">
-              <p>
-                {{ item.name }}
-              </p>
+              <router-link :to="{ name: 'item', params: { item: item.id } }">
+                <img :src="item.sprites.default" id="item">
+                <p>
+                  {{ item.name }}
+                </p>
+              </router-link>
             </div>
           </v-col>
         </v-row>
@@ -83,6 +85,9 @@ export default {
 
 <style scoped lang='scss'>
   #item {
-    width: 15%;
+    width: 10%;
+  }
+  a {
+    text-decoration: none;
   }
 </style>
