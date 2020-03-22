@@ -32,6 +32,16 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
+        <router-link to="/berries">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-fruit-cherries</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Berries</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="primary" dark>

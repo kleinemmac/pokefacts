@@ -1,39 +1,38 @@
 <template>
     <div class="text-center pt-5">
-      <img src="../assets/items.png" max-width="100%">
+      <img src="../assets/berries.png" max-width="100%">
       <p class="pt-5">
-        Search for items by name.
+        Search for your Berry of choice.
       </p>
       <v-container>
         <v-row justify="center">
           <v-col cols="12" lg="6">
             <v-autocomplete
               v-model="search"
-              :items="items"
+              :items="berries"
               :loading="loadingList"
               color="blue"
               hide-no-data
               item-text="name"
               item-value="url"
-              label="Items"
+              label="Berries"
               placeholder="Start typing to Search"
               append-icon="mdi-database-search"
-              @change="fetchItem()"
+              @change="fetchBerry()"
             ></v-autocomplete>
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            <div v-if="loadingItem">
+            <div v-if="loadingBerry">
               <v-progress-circular
                 indeterminate
                 color="primary"
               ></v-progress-circular>
             </div>
-            <div v-else-if="item !== null">
-              <img :src="item.sprites.default" id="item">
+            <div v-else-if="berry !== null">
               <p>
-                {{ item.name }}
+                {{ berry.name }}
               </p>
             </div>
           </v-col>
@@ -44,25 +43,25 @@
 
 <script>
 export default {
-  name: 'Items',
+  name: 'Berries',
 
   components: {},
 
   data: () => ({
-    items: [],
+    berries: [],
     search: '',
     loadingList: true,
-    loadingItem: false,
-    item: null
+    loadingBerry: false,
+    berry: null
   }),
 
   methods: {
-    fetchItem () {
-      this.loadingItem = true
-      this.$store.dispatch('items/getItem', this.search)
-        .then(item => {
-          this.item = item
-          this.loadingItem = false
+    fetchBerry () {
+      this.loadingBerry = true
+      this.$store.dispatch('berries/getBerry', this.search)
+        .then(berry => {
+          this.berry = berry
+          this.loadingBerry = false
         }).catch(error => {
           console.log(error)
         })
@@ -70,10 +69,10 @@ export default {
   },
 
   mounted: function () {
-    this.$store.dispatch('items/getAllItems')
-      .then(item => {
+    this.$store.dispatch('berries/getAllBerries')
+      .then(berry => {
         this.loadingList = false
-        this.items = item
+        this.berries = berry
       }).catch(error => {
         console.log(error)
       })
@@ -82,7 +81,4 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  #item {
-    width: 15%;
-  }
 </style>

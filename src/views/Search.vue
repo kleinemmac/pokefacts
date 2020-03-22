@@ -32,6 +32,9 @@
             </div>
             <div v-else-if="pokemon !== null">
               <img :src="pokemon.sprites.front_default" id="pokemon">
+              <p>
+                {{ pokemon.name }}
+              </p>
             </div>
           </v-col>
         </v-row>

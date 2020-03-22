@@ -1,30 +1,30 @@
 import axios from 'axios'
 
 const state = {
-  items: [],
-  item: {}
+  berries: [],
+  berry: {}
 }
 
 const getters = {
-  getAllItems: (state) => { return state.items },
-  getItem: (state) => { return state.item }
+  getAllBerries: (state) => { return state.berries },
+  getBerry: (state) => { return state.berry }
 }
 
 const actions = {
-  async getAllItems ({ commit }) {
-    return axios.get('https://pokeapi.co/api/v2/item?limit=1000')
+  async getAllBerries ({ commit }) {
+    return axios.get('https://pokeapi.co/api/v2/berry?limit=100')
       .then(data => {
-        commit('setAllItems', data.data.results)
+        commit('setAllBerries', data.data.results)
         return Promise.resolve(data.data.results)
       }).catch(error => {
         return Promise.reject(error)
       })
   },
 
-  async getItem ({ commit }, url) {
+  async getBerry ({ commit }, url) {
     return axios.get(url)
       .then(data => {
-        commit('setItem', data.data)
+        commit('setBerry', data.data)
         return Promise.resolve(data.data)
       }).catch(error => {
         return Promise.reject(error)
@@ -33,11 +33,11 @@ const actions = {
 }
 
 const mutations = {
-  setAllItems (state, item) {
-    state.items = item
+  setAllBerries (state, berry) {
+    state.berries = berry
   },
-  setItem (state, item) {
-    state.item = item
+  setBerry (state, berry) {
+    state.berry = berry
   }
 }
 

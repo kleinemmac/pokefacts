@@ -12,6 +12,10 @@
         <p class="headline py-5">
             Select <router-link to="/items">Items</router-link> to learn more about available items and where to find them.
         </p>
+        <img class="pokeball" src="../assets/pokeball.png">
+        <p class="headline py-5">
+            Select <router-link to="/berries">Berries</router-link> to learn more about available Berries.
+        </p>
     </div>
 </template>
 
