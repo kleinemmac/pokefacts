@@ -22,21 +22,6 @@
             ></v-autocomplete>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col>
-            <div v-if="loadingBerry">
-              <v-progress-circular
-                indeterminate
-                color="primary"
-              ></v-progress-circular>
-            </div>
-            <div v-else-if="berry !== null">
-              <p>
-                {{ berry.name }}
-              </p>
-            </div>
-          </v-col>
-        </v-row>
       </v-container>
     </div>
 </template>
@@ -50,21 +35,15 @@ export default {
   data: () => ({
     berries: [],
     search: '',
-    loadingList: true,
-    loadingBerry: false,
-    berry: null
+    loadingList: true
   }),
 
   methods: {
     fetchBerry () {
-      this.loadingBerry = true
-      this.$store.dispatch('berries/getBerry', this.search)
-        .then(berry => {
-          this.berry = berry
-          this.loadingBerry = false
-        }).catch(error => {
-          console.log(error)
-        })
+      console.log(this.search)
+      const parts = this.search.split('/')
+      const id = parts[parts.length - 2]
+      this.$router.push({ name: 'berry', params: { berry: id } })
     }
   },
 
