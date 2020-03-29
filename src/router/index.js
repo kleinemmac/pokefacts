@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
 import Search from '../views/Search'
+import Pokemon from '../views/Pokemon'
 import Locations from '../views/Locations'
 import Location from '../views/Location'
 import Items from '../views/Items'
@@ -14,6 +15,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', component: Home },
   { path: '/search', component: Search },
+  { name: 'pokemon', path: '/pokemon/:pokemon', component: Pokemon },
   { path: '/locations', component: Locations },
   { name: 'location', path: '/locations/:location', component: Location },
   { path: '/items', component: Items },

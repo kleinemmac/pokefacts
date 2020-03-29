@@ -6,7 +6,7 @@
         </p>
         <img class="pokeball" src="../assets/pokeball.png">
         <p class="headline py-5">
-            Select <router-link to="/locations">Locations</router-link> to view an interactive map of Pokemon by location.
+            Select <router-link to="/locations">Locations</router-link> to learn more about various areas and regions.
         </p>
         <img class="pokeball" src="../assets/pokeball.png">
         <p class="headline py-5">

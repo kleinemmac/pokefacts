@@ -40,7 +40,6 @@ export default {
 
   methods: {
     fetchBerry () {
-      console.log(this.search)
       const parts = this.search.split('/')
       const id = parts[parts.length - 2]
       this.$router.push({ name: 'berry', params: { berry: id } })
@@ -53,7 +52,9 @@ export default {
         this.loadingList = false
         this.berries = berry
       }).catch(error => {
-        console.log(error)
+        this.$store.commit('utils/setVisibility', true)
+        this.$store.commit('utils/setDialogTitle', 'ERROR')
+        this.$store.commit('utils/setMessage', error)
       })
   }
 }

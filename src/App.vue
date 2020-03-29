@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <ErrorDialog></ErrorDialog>
     <v-navigation-drawer app :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" :color="$vuetify.breakpoint.lgAndUp ? 'rgba(255,206,55,0.5)' : null">
       <v-list :color="$vuetify.breakpoint.lgAndUp ? 'rgba(255,206,55,0.05)' : null">
         <router-link to="/search">
@@ -59,10 +60,14 @@
 </template>
 
 <script>
+import ErrorDialog from './components/ErrorDialog'
+
 export default {
   name: 'App',
 
-  components: {},
+  components: {
+    ErrorDialog
+  },
 
   data: () => ({
     drawer: true

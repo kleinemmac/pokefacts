@@ -81,7 +81,9 @@ export default {
         this.location = location
         this.loadingLocation = false
       }).catch(error => {
-        console.log(error)
+        this.$store.commit('utils/setVisibility', true)
+        this.$store.commit('utils/setDialogTitle', 'ERROR')
+        this.$store.commit('utils/setMessage', error)
       })
   }
 }

@@ -31,10 +31,12 @@
               ></v-progress-circular>
             </div>
             <div v-else-if="pokemon !== null">
-              <img :src="pokemon.sprites.front_default" id="pokemon">
-              <p>
-                {{ pokemon.name }}
-              </p>
+              <router-link :to="{ name: 'pokemon', params: { pokemon: pokemon.id } }">
+                <img :src="pokemon.sprites.front_default" id="pokemon">
+                <p>
+                  {{ pokemon.name | capitalize }}
+                </p>
+              </router-link>
             </div>
           </v-col>
         </v-row>
@@ -64,8 +66,18 @@ export default {
           this.pokemon = pokemon
           this.loadingPokemon = false
         }).catch(error => {
-          console.log(error)
+          this.$store.commit('utils/setVisibility', true)
+          this.$store.commit('utils/setDialogTitle', 'ERROR')
+          this.$store.commit('utils/setMessage', error)
         })
+    }
+  },
+
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
 
@@ -75,13 +87,18 @@ export default {
         this.loadingList = false
         this.pokemons = pokemon
       }).catch(error => {
-        console.log(error)
+        this.$store.commit('utils/setVisibility', true)
+        this.$store.commit('utils/setDialogTitle', 'ERROR')
+        this.$store.commit('utils/setMessage', error)
       })
   }
 }
 </script>
 
 <style scoped lang='scss'>
+  a {
+    text-decoration: none;
+  }
   #pokemon {
     width: 15%;
   }
