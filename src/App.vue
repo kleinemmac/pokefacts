@@ -75,8 +75,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 a {
   text-decoration: none;
+}
+.img-fluid {
+  width: 100%;
+  max-width: 703px;
 }
 </style>

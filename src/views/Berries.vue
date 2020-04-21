@@ -1,6 +1,6 @@
 <template>
     <div class="text-center pt-5">
-      <img src="../assets/berries.png" max-width="100%">
+      <img class="img-fluid" src="../assets/berries.png">
       <p class="pt-5">
         Search for your Berry of choice.
       </p>
